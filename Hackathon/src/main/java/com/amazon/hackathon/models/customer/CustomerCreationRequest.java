@@ -4,14 +4,14 @@ public class CustomerCreationRequest {
 
     private String marketplace;
 
-    private boolean isTieredCustomer;
+    private boolean tieredCustomer;
 
     private boolean paymentWhitelisted;
 
     public static final class CustomerCreationRequestBuilder {
 
         private String marketplace;
-        private boolean isTieredCustomer;
+        private boolean tieredCustomer;
         private boolean paymentWhitelisted;
 
         private CustomerCreationRequestBuilder() {
@@ -31,7 +31,7 @@ public class CustomerCreationRequest {
 
         public CustomerCreationRequestBuilder withIsTieredCustomer(boolean isTieredCustomer) {
 
-            this.isTieredCustomer = isTieredCustomer;
+            this.tieredCustomer = isTieredCustomer;
             return this;
         }
 
@@ -45,7 +45,7 @@ public class CustomerCreationRequest {
 
             CustomerCreationRequest customerCreationRequest = new CustomerCreationRequest();
             customerCreationRequest.marketplace = this.marketplace;
-            customerCreationRequest.isTieredCustomer = this.isTieredCustomer;
+            customerCreationRequest.tieredCustomer = this.tieredCustomer;
             customerCreationRequest.paymentWhitelisted = this.paymentWhitelisted;
             return customerCreationRequest;
         }
@@ -63,12 +63,12 @@ public class CustomerCreationRequest {
 
     public boolean isTieredCustomer() {
 
-        return isTieredCustomer;
+        return tieredCustomer;
     }
 
     public void setTieredCustomer(final boolean tieredCustomer) {
 
-        isTieredCustomer = tieredCustomer;
+        this.tieredCustomer = tieredCustomer;
     }
 
     public boolean isPaymentWhitelisted() {
@@ -86,7 +86,7 @@ public class CustomerCreationRequest {
 
         final StringBuilder sb = new StringBuilder("CustomerCreationRequest{");
         sb.append("marketplace='").append(marketplace).append('\'');
-        sb.append(", isTieredCustomer=").append(isTieredCustomer);
+        sb.append(", tieredCustomer=").append(tieredCustomer);
         sb.append(", paymentWhitelisted=").append(paymentWhitelisted);
         sb.append('}');
         return sb.toString();
