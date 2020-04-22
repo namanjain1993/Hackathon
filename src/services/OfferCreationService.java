@@ -4,7 +4,7 @@ import models.offer.Offer;
 
 public class OfferCreationService {
 
-    public static Offer createAnOffer(String merchantId, String asin) {
+    public static Offer createAnOffer(String marketplace, String merchantId, String asin) {
 
         /*
         See how Asin's can be randomized

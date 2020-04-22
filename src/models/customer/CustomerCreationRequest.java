@@ -6,10 +6,13 @@ public class CustomerCreationRequest {
 
     private boolean isTieredCustomer;
 
+    private boolean paymentWhitelisted;
+
     public static final class CustomerCreationRequestBuilder {
 
         private String marketplace;
         private boolean isTieredCustomer;
+        private boolean paymentWhitelisted;
 
         private CustomerCreationRequestBuilder() {
 
@@ -32,11 +35,18 @@ public class CustomerCreationRequest {
             return this;
         }
 
+        public CustomerCreationRequestBuilder withPaymentWhitelisted(boolean paymentWhitelisted) {
+
+            this.paymentWhitelisted = paymentWhitelisted;
+            return this;
+        }
+
         public CustomerCreationRequest build() {
 
             CustomerCreationRequest customerCreationRequest = new CustomerCreationRequest();
             customerCreationRequest.marketplace = this.marketplace;
             customerCreationRequest.isTieredCustomer = this.isTieredCustomer;
+            customerCreationRequest.paymentWhitelisted = this.paymentWhitelisted;
             return customerCreationRequest;
         }
     }
@@ -61,12 +71,23 @@ public class CustomerCreationRequest {
         isTieredCustomer = tieredCustomer;
     }
 
+    public boolean isPaymentWhitelisted() {
+
+        return paymentWhitelisted;
+    }
+
+    public void setPaymentWhitelisted(final boolean paymentWhitelisted) {
+
+        this.paymentWhitelisted = paymentWhitelisted;
+    }
+
     @Override
     public String toString() {
 
         final StringBuilder sb = new StringBuilder("CustomerCreationRequest{");
         sb.append("marketplace='").append(marketplace).append('\'');
         sb.append(", isTieredCustomer=").append(isTieredCustomer);
+        sb.append(", paymentWhitelisted=").append(paymentWhitelisted);
         sb.append('}');
         return sb.toString();
     }

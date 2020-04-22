@@ -11,8 +11,8 @@ public class OfferCreationRequest {
 
     private String marketplace;
 
-    public OfferCreationRequest(final String merchantId, final boolean enableForSnS, final Integer inventoryCount) {
-
+    public OfferCreationRequest(final String marketplace, final String merchantId, final boolean enableForSnS, final Integer inventoryCount) {
+        this.marketplace = marketplace;
         this.merchantId = merchantId;
         this.enableForSnS = enableForSnS;
         this.inventoryCount = inventoryCount;
@@ -46,5 +46,15 @@ public class OfferCreationRequest {
     public void setInventoryCount(final Integer inventoryCount) {
 
         this.inventoryCount = inventoryCount;
+    }
+
+    public String getMarketplace() {
+
+        return marketplace;
+    }
+
+    public void setMarketplace(final String marketplace) {
+
+        this.marketplace = marketplace;
     }
 }

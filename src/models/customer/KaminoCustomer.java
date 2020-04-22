@@ -10,12 +10,15 @@ public class KaminoCustomer {
 
     private String password;
 
+    private String paymentId;
+
     public static final class KaminoCustomerBuilder {
 
         private String name;
         private String encryptedCustomerID;
         private String emailId;
         private String password;
+        private String paymentId;
 
         private KaminoCustomerBuilder() {
 
@@ -50,6 +53,12 @@ public class KaminoCustomer {
             return this;
         }
 
+        public KaminoCustomerBuilder withPaymentId(String paymentId) {
+
+            this.paymentId = paymentId;
+            return this;
+        }
+
         public KaminoCustomer build() {
 
             KaminoCustomer kaminoCustomer = new KaminoCustomer();
@@ -57,6 +66,7 @@ public class KaminoCustomer {
             kaminoCustomer.name = this.name;
             kaminoCustomer.emailId = this.emailId;
             kaminoCustomer.password = this.password;
+            kaminoCustomer.paymentId = this.paymentId;
             return kaminoCustomer;
         }
     }
@@ -101,6 +111,16 @@ public class KaminoCustomer {
         this.password = password;
     }
 
+    public String getPaymentId() {
+
+        return paymentId;
+    }
+
+    public void setPaymentId(final String paymentId) {
+
+        this.paymentId = paymentId;
+    }
+
     @Override
     public String toString() {
 
@@ -109,6 +129,7 @@ public class KaminoCustomer {
         sb.append(", encryptedCustomerID='").append(encryptedCustomerID).append('\'');
         sb.append(", emailId='").append(emailId).append('\'');
         sb.append(", password='").append(password).append('\'');
+        sb.append(", paymentId='").append(paymentId).append('\'');
         sb.append('}');
         return sb.toString();
     }

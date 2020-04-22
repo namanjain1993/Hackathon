@@ -12,6 +12,10 @@ public class CustomerCreationResponse {
 
     private boolean tieredCustomer;
 
+    private String paymentId;
+
+    private boolean paymentWhitelisted;
+
     private int subscriptionCount;
 
     private boolean successful;
@@ -28,6 +32,8 @@ public class CustomerCreationResponse {
         private int subscriptionCount;
         private boolean successful;
         private String message;
+        private String paymentId;
+        private boolean paymentWhitelisted;
 
         private CustomerCreationResponseBuilder() {
 
@@ -86,6 +92,18 @@ public class CustomerCreationResponse {
             return this;
         }
 
+        public CustomerCreationResponseBuilder withPaymentWhitelisted(boolean paymentWhitelisted) {
+
+            this.paymentWhitelisted = paymentWhitelisted;
+            return this;
+        }
+
+        public CustomerCreationResponseBuilder withPaymentId(String paymentId) {
+
+            this.paymentId = paymentId;
+            return this;
+        }
+
         public CustomerCreationResponse build() {
 
             CustomerCreationResponse customerCreationResponse = new CustomerCreationResponse();
@@ -97,6 +115,8 @@ public class CustomerCreationResponse {
             customerCreationResponse.tieredCustomer = this.tieredCustomer;
             customerCreationResponse.emailId = this.emailId;
             customerCreationResponse.successful = this.successful;
+            customerCreationResponse.paymentWhitelisted = this.paymentWhitelisted;
+            customerCreationResponse.paymentId = this.paymentId;
             return customerCreationResponse;
         }
     }
@@ -181,6 +201,26 @@ public class CustomerCreationResponse {
         this.message = message;
     }
 
+    public String getPaymentId() {
+
+        return paymentId;
+    }
+
+    public void setPaymentId(final String paymentId) {
+
+        this.paymentId = paymentId;
+    }
+
+    public boolean isPaymentWhitelisted() {
+
+        return paymentWhitelisted;
+    }
+
+    public void setPaymentWhitelisted(final boolean paymentWhitelisted) {
+
+        this.paymentWhitelisted = paymentWhitelisted;
+    }
+
     @Override
     public String toString() {
 
@@ -190,6 +230,8 @@ public class CustomerCreationResponse {
         sb.append(", emailId='").append(emailId).append('\'');
         sb.append(", password='").append(password).append('\'');
         sb.append(", tieredCustomer=").append(tieredCustomer);
+        sb.append(", paymentId='").append(paymentId).append('\'');
+        sb.append(", paymentWhitelisted=").append(paymentWhitelisted);
         sb.append(", subscriptionCount=").append(subscriptionCount);
         sb.append(", successful=").append(successful);
         sb.append(", message='").append(message).append('\'');

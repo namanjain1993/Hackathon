@@ -21,7 +21,7 @@ public class OfferController {
 
         String asin = AsinCopierService.fetchAValidFBAAsin();
 
-        Offer offer = OfferCreationService.createAnOffer(offerCreationRequest.getMerchantId(), asin);
+        Offer offer = OfferCreationService.createAnOffer(offerCreationRequest.getMarketplace(), offerCreationRequest.getMerchantId(), asin);
 
         FBASnSService.convertingOfferToFBA(offer);
 
