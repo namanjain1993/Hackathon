@@ -19,7 +19,8 @@ import com.amazon.hackathon.services.OfferCreationService;
 public class OfferController {
 
     @GetMapping(value = "/createOffer")
-    public static OfferCreationResponse createOffer(@RequestBody OfferCreationRequest offerCreationRequest) {
+    public static OfferCreationResponse createOffer(@RequestBody OfferCreationRequest offerCreationRequest)
+        throws InterruptedException {
 
         /*
         Call Asin Service
@@ -30,14 +31,34 @@ public class OfferController {
 
         String asin = AsinCopierService.fetchAValidFBAAsin();
 
+        ProgressController.setCurrentTask("Fetching a Valid Asin");
+        ProgressController.setPercentage(20);
+        Thread.sleep(3000);
+
         Offer offer = OfferCreationService
             .createAnOffer(offerCreationRequest.getMarketplace(), offerCreationRequest.getMerchantId(), asin);
 
+        ProgressController.setCurrentTask("Creating an Offer");
+        ProgressController.setPercentage(40);
+        Thread.sleep(3000);
+
         FBASnSService.convertingOfferToFBA(offer);
+
+        ProgressController.setCurrentTask("Converting to an FBA Offer");
+        ProgressController.setPercentage(60);
+        Thread.sleep(3000);
 
         FBASnSService.enableForSnS(offer, offerCreationRequest.isEnableForSnS());
 
+        ProgressController.setCurrentTask("Enabling FBA Offer For SnS");
+        ProgressController.setPercentage(80);
+        Thread.sleep(3000);
+
         InventoryService.addingInventoryToOffer(offer, offerCreationRequest.getInventoryCount());
+
+        ProgressController.setCurrentTask("Adding inventory to Offer");
+        ProgressController.setPercentage(100);
+        Thread.sleep(3000);
 
         return new OfferCreationResponse(offer, "Successfully created offer", true);
     }
