@@ -1,7 +1,7 @@
 package com.amazon.hackathon.controller;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -19,7 +19,7 @@ import com.amazon.hackathon.services.OfferCreationService;
 @RequestMapping("/offer")
 public class OfferController {
 
-    @GetMapping(value = "/createOffer")
+    @PostMapping(value = "/createOffer")
     @ResponseStatus(HttpStatus.OK)
     public static OfferCreationResponse createOffer(@RequestBody OfferCreationRequest offerCreationRequest)
         throws InterruptedException {

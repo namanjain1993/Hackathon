@@ -2,8 +2,7 @@ package com.amazon.hackathon.controller;
 
 import static com.amazon.hackathon.models.customer.CustomerCreationResponse.CustomerCreationResponseBuilder.aCustomerCreationResponse;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +18,7 @@ import com.amazon.hackathon.services.RCXSubscriptionService;
 @RequestMapping("/customer")
 public class CustomerController {
 
-    @GetMapping(value = "/createCustomer")
+    @PostMapping(value = "/createCustomer")
     public static CustomerCreationResponse createCustomer(
         @RequestBody CustomerCreationRequest customerCreationRequest) throws InterruptedException {
 
